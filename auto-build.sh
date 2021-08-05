@@ -1,4 +1,4 @@
-if [ lsmod | grep -q "88x2bu" ]
+if  lsmod | grep -q "88x2bu" 
 then
 	logger -t WIFI "Module 88x2bu already loaded successfully"
 	exit 0
@@ -11,26 +11,27 @@ else
 	exit 1
 fi
 
-if [! make clean ]
+if ! make clean 
 then
-       
-else
 	logger -t WIFI "Unable to clean driver directory"
 	exit 2
 fi
-if [! make ]
+if ! make -j 4 
 then
 	logger -t WIFI "Unable to make driver"
 	exit 3
-if [! make install ]
+fi
+
+if ! make install 
 then
 	logger -t WIFI "Unable to install driver"
 	exit 4
 fi
 
-if [! modprobe 88x2bu ]
+if ! modprobe 88x2bu 
+then
 	logger -t WIFI "Module driver failed to load"
 	exit 5
 else
-	logger -t WIFI "Module 88x2bu successfully"
+	logger -t WIFI "Module 88x2bu successfully built and loaded"
 fi
