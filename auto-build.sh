@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # autobuild.sh
-# AutoBuild and install the 88x2bu module and load it if necessary
 
 if  lsmod | grep -q "88x2bu" # check if module 88x2bu is loaded
 then
