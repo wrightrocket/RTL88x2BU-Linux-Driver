@@ -1,0 +1,52 @@
+--- auto-build.sh	2022-03-24 14:06:01.693389014 -0700
++++ build.sh	2022-03-24 14:29:00.866117380 -0700
+@@ -1,15 +1,15 @@
+ #!/usr/bin/env bash
+ # autobuild.sh
+ 
+-if  lsmod | grep -q "88x2bu" # check if module 88x2bu is loaded
++if  lsmod | grep -q "88x2bu" # check if kernel module 88x2bu is loaded
+ then
+ 	logger -t 88x2BU "Module 88x2bu already loaded successfully"
+ 	exit 0
+ else
+-	logger -t 88x2BU "Starting build of 88x2bu module"
++	logger -t 88x2BU "Starting build of 88x2bu kernel module"
+ fi
+ 
+-if [ -d /usr/local/src/RTL88x2BU-Linux-Driver/ ] # check for module driver directory
++if [ -d /usr/local/src/RTL88x2BU-Linux-Driver/ ] # check for kernel module driver directory
+ then 
+ 	cd /usr/local/src/RTL88x2BU-Linux-Driver/
+ else
+@@ -25,23 +25,23 @@
+ 	logger -t 88x2BU "Successfully cleaned driver directory"
+ fi
+ 
+-if ! make -j 4 # Compile the module
++if ! make -j 4 # Compile the kernel module
+ then
+-	logger -t 88x2BU "Unable to compile 88x2bu module"
++	logger -t 88x2BU "Unable to compile 88x2bu kernel module"
+ 	exit 3
+ else
+-	logger -t 88x2BU "Successfully compiled 88x2bu module"
++	logger -t 88x2BU "Successfully compiled 88x2bu kernel module"
+ fi
+ 
+-if ! make install # Install the module
++if ! make install # Install the kernel module
+ then
+-	logger -t 88x2BU "Unable to install 88x2bu module"
++	logger -t 88x2BU "Unable to install 88x2bu kernel module"
+ 	exit 4
+ else 
+-	logger -t 88x2BU "Successfully installed 88x2bu module"
++	logger -t 88x2BU "Successfully installed 88x2bu kernel module"
+ fi
+ 
+-if ! modprobe 88x2bu # Load the module
++if ! modprobe 88x2bu # Load the kernel module
+ then
+ 	logger -t 88x2BU "Module 88x2bu failed to load"
+ 	exit 5
