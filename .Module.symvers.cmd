@@ -1,0 +1,1 @@
+cmd_/usr/local/src/RTL88x2BU-Linux-Driver/Module.symvers := sed 's/\.ko$$/\.o/' /usr/local/src/RTL88x2BU-Linux-Driver/modules.order | scripts/mod/modpost -m -a  -o /usr/local/src/RTL88x2BU-Linux-Driver/Module.symvers -e -i Module.symvers   -T -

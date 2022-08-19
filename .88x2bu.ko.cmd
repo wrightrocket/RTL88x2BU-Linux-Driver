@@ -1,0 +1,1 @@
+cmd_/usr/local/src/RTL88x2BU-Linux-Driver/88x2bu.ko := ld -r -m elf_x86_64 --build-id=sha1  -T scripts/module.lds -o /usr/local/src/RTL88x2BU-Linux-Driver/88x2bu.ko /usr/local/src/RTL88x2BU-Linux-Driver/88x2bu.o /usr/local/src/RTL88x2BU-Linux-Driver/88x2bu.mod.o;  true

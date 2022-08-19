@@ -33,7 +33,7 @@ else
 	logger -t 88x2BU "Successfully compiled 88x2bu module"
 fi
 
-if ! make install # Install the module
+if ! sudo make install # Install the module (best to have NOPASSWD:ALL for commands in sudoers)
 then
 	logger -t 88x2BU "Unable to install 88x2bu module"
 	exit 4
@@ -41,7 +41,7 @@ else
 	logger -t 88x2BU "Successfully installed 88x2bu module"
 fi
 
-if ! modprobe 88x2bu # Load the module
+if ! sudo modprobe 88x2bu # Load the module
 then
 	logger -t 88x2BU "Module 88x2bu failed to load"
 	exit 5
